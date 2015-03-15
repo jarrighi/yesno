@@ -13,6 +13,7 @@ import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,6 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'yesno',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,6 +87,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+#templates
+
+TEMPLATE_DIRS = [
+    TEMPLATE_PATH,
+]
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,0 +1,17 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{% block title %}Questions | YesNo{% endblock title %}</title>
+</head>
+<body>
+{% block content %}
+<h1>Questions:</h1>
+    {%  for question in questions %}
+        <div id="questions">
+            <p id="post">{{ question|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+</body>
+</html>
