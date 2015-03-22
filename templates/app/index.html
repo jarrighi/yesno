@@ -6,11 +6,15 @@
 <body>
 {% block content %}
 <h1>Questions:</h1>
-    {%  for question in questions %}
-        <div id="questions">
-            <p id="post">{{ question|linebreaks }}</p>
-        </div>
-    {% endfor %}
+    <div id="question">
+        <p>{{ question }}</p>
+    </div>
+    <div id="next">
+    	<p><a href="/?p={{ nextid }}">Next</a></p>
+    </div>
+    <div id="last">
+    	<p><a href="/?p={{ lastid }}">Last</a></p>
+    </div>
 {% endblock content %}
 
 </body>
