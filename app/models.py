@@ -14,6 +14,7 @@ class Answer(models.Model):
 	user = models.ForeignKey(User, null=True)
 	question = models.ForeignKey(Question, null=True)
 	published = models.DateTimeField(auto_now_add=True, null=True)
+	answer = models.NullBooleanField()
 
 	def __unicode__(self):
 		return "Answer # {}".format(self.id)

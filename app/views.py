@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from app.models import Question
 
 def question(request):
@@ -16,3 +16,6 @@ def question(request):
 	return render(request, 'app/index.html', {'question': text, 'qid': qid, 'nextid': nextid, 'lastid': lastid})
 
 
+def answer(request, *args):
+	print "answered"
+	return redirect('/')
