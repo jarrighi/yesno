@@ -13,11 +13,8 @@ def question(request):
 		qid = random.randint(1, maxid)
 	question = Question.objects.get(id=qid) 
 	text = 	question.question
-	# qid = question.id
-	nextid = qid + 1
-	lastid = qid - 1
 	print(text)
-	return render(request, 'app/index.html', {'question': text, 'qid': qid, 'nextid': nextid, 'lastid': lastid})
+	return render(request, 'app/index.html', {'question': text, 'qid': qid})
 
 
 def answer(request, *args):
