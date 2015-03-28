@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from app.models import Question
+from app.models import Question, Answer
 import random
 
 def question(request):
@@ -9,7 +9,6 @@ def question(request):
 		qid = int(request.GET.get("p"))
 	except:
 		maxid = Question.objects.latest('id').id
-		print(maxid)
 		qid = random.randint(1, maxid)
 	question = Question.objects.get(id=qid) 
 	text = 	question.question
@@ -17,6 +16,13 @@ def question(request):
 	return render(request, 'app/index.html', {'question': text, 'qid': qid})
 
 
-def answer(request, *args):
-	print("answered")
+def answer(request, qid, answer, *args):
+	print(qid)
+	print(answer)
+	answermap = {'yes': True, 'no': False}
+	answer = answermap[answer]
+	print answer
+	q = Question.objects.get(id=qid)
+	a = Answer(question = q, answer = answer)
+	a.save()
 	return redirect('/')
