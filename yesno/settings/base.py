@@ -14,6 +14,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
 
 
@@ -87,6 +88,10 @@ USE_TZ = True
 
 TEMPLATE_DIRS = [
     TEMPLATE_PATH,
+]
+
+STATICFILES_DIRS = [
+    STATIC_PATH,
 ]
 
 

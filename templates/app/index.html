@@ -1,22 +1,51 @@
+{% load static from staticfiles %}
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+    <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
     <title>{% block title %}Questions | YesNo{% endblock title %}</title>
 </head>
 <body>
+<nav>
+    <div class="logo"><p>YesNo.Ninja</p></div>
+    <div class="menu">
+        <ul>
+            <li><a href="submit.html">Submit</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</nav>
 {% block content %}
-<h1>Questions:</h1>
-    <div id="question">
-        <p>{{ question }}</p>
+<div class="container">
+    <div class="question-nav row">
+        <div id="last" class="one column">
+            <p><a href="/"> < </a></p>
+        </div>
+        <div id="question" class="ten columns">
+            <h1>Q:</h1>
+            <p>{{ question }}</p>
+            <div class="clear"></div>
+        </div>
+        <div id="next" class="one column">
+            <p><a href="/"> > </a></p>
+        </div> 
     </div>
-    <div id="next">
-    	<p><a href="/">Next</a></p>
-    </div>
-    <!-- <div id="last">
-    	<p><a href="/?p={{ lastid }}">Last</a></p>
-    </div> -->
-    <div><p><a href="/answer/{{ qid }}/yes">Yes: </a></p></div>
-    <div><p><a href="/answer/{{ qid }}/no">No: </a></p></div>
+    <div class="answer">
+        <div>
+            <p class="button yes"><a href="/answer/{{ qid }}/yes">Yes</a></p>
+            <p class="button no"><a href="/answer/{{ qid }}/no">No</a></p>
+        </div>
+    </div> 
+</div>
+
+    
+    
+
+    
     
 {% endblock content %}
 

@@ -1,0 +1,93 @@
+/****BODY***********/
+
+body {
+	background-color: #888;
+}
+
+a {
+	text-decoration: none;
+	color: red;
+}
+
+/****MAIN NAV**********/
+
+nav {
+	background-color: rgb(58, 58, 58);
+}
+
+nav ul li {
+	list-style: none;
+	display: inline-block;
+}
+
+.logo p {
+	color: white;
+}
+
+.logo {
+	float: left;
+	padding: 10px;
+}
+
+.menu {
+	float: right;
+	padding: 10px;
+}
+
+/****QUESTION DIV**********/
+
+#question {
+	border: 5px black solid;
+	background-color: white;
+	padding: 10px;
+}
+
+#question h1 {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 0px;
+}
+
+#question p{ 
+	font-size: 1.75rem;
+}
+	
+.clear {
+	clear: both;
+}
+
+#last {
+	
+}
+
+#next {
+	
+}
+
+
+
+/****Answer Div***********/
+
+.answer {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.answer .button {
+	width: 45%;
+	margin: 5px;
+	background-color: rgb(58, 58, 58);
+	border-color: black;
+}
+
+.answer .yes {
+	float: right;
+	color: red;
+}
+
+.answer .no {
+	float: left;
+	color: red;
+}
+
