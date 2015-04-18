@@ -12,7 +12,7 @@ a {
 /****MAIN NAV**********/
 
 nav {
-	background-color: rgb(58, 58, 58);
+	background-color: #3A3A3A;
 }
 
 nav ul li {
@@ -20,13 +20,13 @@ nav ul li {
 	display: inline-block;
 }
 
-.logo p {
-	color: white;
-}
-
 .logo {
 	float: left;
 	padding: 10px;
+}
+
+.logo p {
+	color: white;
 }
 
 .menu {
@@ -37,6 +37,9 @@ nav ul li {
 /****QUESTION DIV**********/
 
 #question {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	border: 5px black solid;
 	background-color: white;
 	padding: 10px;
@@ -57,7 +60,7 @@ nav ul li {
 }
 
 #last {
-	
+	text-align: right;	
 }
 
 #next {
@@ -66,28 +69,60 @@ nav ul li {
 
 
 
-/****Answer Div***********/
+/****ANSWER DIV***********/
 
 .answer {
-	width: 100%;
-	margin: 0 auto;
+	/*width: 100%;*/
+	/*margin: 0 auto;*/
 	text-align: center;
+	display: inline;
 }
 
 .answer .button {
-	width: 45%;
+	/*width: 45%;*/
 	margin: 5px;
 	background-color: rgb(58, 58, 58);
 	border-color: black;
 }
 
 .answer .yes {
-	float: right;
+	/*float: right;*/
 	color: red;
 }
 
 .answer .no {
-	float: left;
+	/*float: left;*/
 	color: red;
 }
 
+/****RESPONSIVE***********/
+
+@media (min-width: 320px) {
+  .container {
+    width: 95%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+}
