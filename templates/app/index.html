@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="{% static "css/normalize.css" %}">
     <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
     <link rel="stylesheet" href="{% static "css/main.css" %}">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-    <title>{% block title %}YesNo{% endblock title %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>{% block title %}YesNo{% endblock title %}</title> 
 </head>
 
 <body>
@@ -30,34 +30,38 @@
 
 <!-- ******QUESTION ROW****** -->
     <div class="row">
-        <div class="question-nav">
-            <div id="last" class="one column">
-                <p><a href="/"><i class="fa fa-chevron-left fa-2x"></i></a></p>
+        <div class="twelve columns">
+            <div class="question-nav">
+                <ul>
+                    <li id="last">
+                        <a href="/"><i class="fa fa-chevron-left fa-2x"></i></a>
+                    </li>
+                    <li id="question">
+                        <h1>Q:</h1>
+                        <p>{{ question }}</p>
+                    </li>
+                    <li id="next">
+                        <a href="/"><i class="fa fa-chevron-right fa-2x"></i></a>
+                    </li>
+                </ul>
+
             </div>
-            <div id="question" class="ten columns">
-                <h1>Q:</h1>
-                <p>{{ question }}</p>
-            </div>
-            <div id="next" class="one column">
-                <p><a href="/"><i class="fa fa-chevron-right fa-2x"></i></a></p>
-            </div> 
         </div>
     </div>
 
 <!-- ******ANSWER ROW****** -->
-    <div class="row">
-        <div class="answer">
-            <div class="one column"></div>
-            <div class="ten columns">
-                <p class="button yes"><a href="/answer/{{ qid }}/yes">Yes</a></p>
-                <p class="button no"><a href="/answer/{{ qid }}/no">No</a></p>
-            </div>
-            <div class="one column"></div>
-        </div> 
+
+  <div class="row">
+        <div class="twelve columns">
+             <div class="answer">
+                <span class="button yes"><a href="/answer/{{ qid }}/yes">Yes</a></span>
+                <span class="button no"><a href="/answer/{{ qid }}/no">No</a></span>
+            </div>  
+        </div>
     </div>
 
-</div>
 
+</div>
         
 {% endblock content %}
 

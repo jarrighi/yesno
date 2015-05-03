@@ -6,123 +6,129 @@ body {
 
 a {
 	text-decoration: none;
-	color: red;
+	color: #E60000;
 }
 
 /****MAIN NAV**********/
 
 nav {
 	background-color: #3A3A3A;
+	height: 60px;
+	position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 nav ul li {
 	list-style: none;
 	display: inline-block;
+	
+	
 }
 
 .logo {
 	float: left;
-	padding: 10px;
+	padding: 5px;
 }
 
 .logo p {
-	color: white;
+	color: #FFF;
 }
 
 .menu {
 	float: right;
-	padding: 10px;
+	padding: 2%;
+}
+
+.menu ul li a {
+	margin: 0 5px;
+
 }
 
 /****QUESTION DIV**********/
 
+
+#next, #last, #question {
+	display: inline-block;
+
+}
+
+#next a {
+	width: 10%;
+}
+
+#last a {
+	width: 10%;
+}
+
 #question {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	border: 5px black solid;
-	background-color: white;
-	padding: 10px;
+	border: 5px #000 solid;
+	background-color: #FFF;
+	width: 80%;
+	max-width: 960px;
+}
+
+.question-nav {
+	padding-top: 5%;
+}
+.question-nav ul{
+	list-style: none;
+	display: inline;
 }
 
 #question h1 {
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 0px;
+	padding: 2%;
 }
 
 #question p{ 
 	font-size: 1.75rem;
+	padding: 2%;
 }
+
+
 	
 .clear {
 	clear: both;
 }
 
-#last {
-	text-align: right;	
-}
-
-#next {
-	
-}
 
 
 
 /****ANSWER DIV***********/
 
+.answer span {
+	width: 30%;
+}
+
+.yes {
+	margin-right: 7%;
+	margin-left: 10%;
+}
+
 .answer {
-	/*width: 100%;*/
-	/*margin: 0 auto;*/
-	text-align: center;
-	display: inline;
+	
 }
 
 .answer .button {
-	/*width: 45%;*/
-	margin: 5px;
-	background-color: rgb(58, 58, 58);
-	border-color: black;
+	
+	background-color: #3A3A3A;
+	border-color: #000;
 }
 
-.answer .yes {
-	/*float: right;*/
-	color: red;
+.answer a {
+	font-size: 16px;
 }
 
-.answer .no {
-	/*float: left;*/
-	color: red;
-}
 
 /****RESPONSIVE***********/
 
-@media (min-width: 320px) {
-  .container {
-    width: 95%; }
-  .column,
-  .columns {
-    margin-left: 4%; }
-  .column:first-child,
-  .columns:first-child {
-    margin-left: 0; }
+@media (max-width: 399px) {
 
-  .one.column,
-  .one.columns                    { width: 4.66666666667%; }
-  .two.columns                    { width: 13.3333333333%; }
-  .three.columns                  { width: 22%;            }
-  .four.columns                   { width: 30.6666666667%; }
-  .five.columns                   { width: 39.3333333333%; }
-  .six.columns                    { width: 48%;            }
-  .seven.columns                  { width: 56.6666666667%; }
-  .eight.columns                  { width: 65.3333333333%; }
-  .nine.columns                   { width: 74.0%;          }
-  .ten.columns                    { width: 82.6666666667%; }
-  .eleven.columns                 { width: 91.3333333333%; }
-  .twelve.columns                 { width: 100%; margin-left: 0; }
 
-  .one-third.column               { width: 30.6666666667%; }
-  .two-thirds.column              { width: 65.3333333333%; }
-
-  .one-half.column                { width: 48%; }
 }
