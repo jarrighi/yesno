@@ -14,10 +14,6 @@ a {
 nav {
 	background-color: #3A3A3A;
 	height: 60px;
-	position: relative;
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -25,13 +21,11 @@ nav {
 nav ul li {
 	list-style: none;
 	display: inline-block;
-	
-	
 }
 
 .logo {
 	float: left;
-	padding: 5px;
+	padding: 15px 5px;
 }
 
 .logo p {
@@ -40,12 +34,17 @@ nav ul li {
 
 .menu {
 	float: right;
-	padding: 2%;
+	padding: 15px 5px;
 }
 
 .menu ul li a {
 	margin: 0 5px;
+}
 
+/****CONTAINER*********/
+
+.container {
+	text-align: center;
 }
 
 /****QUESTION DIV**********/
@@ -53,7 +52,6 @@ nav ul li {
 
 #next, #last, #question {
 	display: inline-block;
-
 }
 
 #next a {
@@ -72,8 +70,10 @@ nav ul li {
 }
 
 .question-nav {
-	padding-top: 5%;
+	padding-top: 7%;
+	padding-bottom: 5%;
 }
+
 .question-nav ul{
 	list-style: none;
 	display: inline;
@@ -89,10 +89,9 @@ nav ul li {
 #question p{ 
 	font-size: 1.75rem;
 	padding: 2%;
+	text-align: left;
 }
 
-
-	
 .clear {
 	clear: both;
 }
@@ -107,16 +106,10 @@ nav ul li {
 }
 
 .yes {
-	margin-right: 7%;
-	margin-left: 10%;
-}
-
-.answer {
-	
+	margin-right: 6%;
 }
 
 .answer .button {
-	
 	background-color: #3A3A3A;
 	border-color: #000;
 }
@@ -129,6 +122,8 @@ nav ul li {
 /****RESPONSIVE***********/
 
 @media (max-width: 399px) {
+	.container {
 
+	}
 
 }
