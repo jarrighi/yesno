@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.question, name='question'),
     url(r'^answer/(?P<qid>[0-9]+)/(?P<answer>yes|no)$', views.answer, name='answer'),
+    url(r'^answers/(?P<qid>[0-9]+)', views.answer_tallies, name='answers'),
 )

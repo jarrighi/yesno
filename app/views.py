@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from app.models import Question, Answer
 import random
+import json
 
 def question(request):
 	# questions = Question.objects.order_by('published')
@@ -26,3 +28,14 @@ def answer(request, qid, answer, *args):
 	a = Answer(question = q, answer = answer)
 	a.save()
 	return redirect('/')
+
+def answer_tallies(request, qid):
+	response_content = {}
+
+	yesses = Answer.objects.filter(question=qid, answer=True).count()
+	response_content['yesses'] = yesses
+
+	nos = Answer.objects.filter(question=qid, answer=False).count()
+	response_content['nos'] = nos
+	
+	return HttpResponse(json.dumps(response_content), content_type="application/json")
