@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.question, name='question'),
     url(r'^answer/(?P<qid>[0-9]+)/(?P<answer>yes|no)$', views.answer, name='answer'),
-    url(r'^submit/$', views.submit, name='submit')
+    url(r'^submit/$', views.submit, name='submit'),
+    url(r'^submit_ajax/$', views.submit_ajax, name='submit_ajax'),
 )

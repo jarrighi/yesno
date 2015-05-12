@@ -30,3 +30,21 @@ def answer(request, qid, answer, *args):
 def submit(request):
 	context_dict = {}
 	return render(request, 'app/submit.html', context_dict)
+
+@csrf_exempt
+def submit_ajax(request):
+	if request.method == 'POST':
+		question = Question()
+		question.question = request.POST.get("question_text")
+		question.save()
+
+		return HttpResponse(
+            json.dumps(response_data),
+            content_type="application/json"
+        )
+    else:
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+	

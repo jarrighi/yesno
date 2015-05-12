@@ -19,3 +19,4 @@ class Answer(models.Model):
 	def __unicode__(self):
 		return "Answer # {}".format(self.id)
 
+
