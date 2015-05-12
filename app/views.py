@@ -26,3 +26,7 @@ def answer(request, qid, answer, *args):
 	a = Answer(question = q, answer = answer)
 	a.save()
 	return redirect('/')
+
+def submit(request):
+	context_dict = {}
+	return render(request, 'app/submit.html', context_dict)
