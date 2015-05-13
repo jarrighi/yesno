@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from app.models import Question, Answer
 import random
+from django.views.decorators.csrf import csrf_exempt
 
 def question(request):
 	# questions = Question.objects.order_by('published')
@@ -38,12 +39,19 @@ def submit_ajax(request):
 		question.question = request.POST.get("question_text")
 		question.save()
 
+		question = list(Question.objects.all())
+		question_list = []
+		for q in question:
+			question_list.append({
+				"question": q.question
+			})
+
 		return HttpResponse(
-            json.dumps(response_data),
+            json.dumps(question_list),
             content_type="application/json"
         )
-    else:
-        return HttpResponse(
+	else:
+		return HttpResponse(
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
