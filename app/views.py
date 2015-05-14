@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from app.models import Question, Answer
 import random
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import json
+
 
 def question(request):
 	# questions = Question.objects.order_by('published')
@@ -46,7 +49,7 @@ def submit_ajax(request):
 				"question": q.question
 			})
 
-		return HttpResponse(
+		return HttpResponse( 
             json.dumps(question_list),
             content_type="application/json"
         )
