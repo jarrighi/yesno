@@ -32,25 +32,28 @@ def answer(request, qid, answer, *args):
 	return redirect('/')
 
 def submit(request):
-	context_dict = {}
-	return render(request, 'app/submit.html', context_dict)
+	if request.method =='POST':
+		print request.POST
+
+	return render(request, 'app/submit.html')
+	# context_dict = {}
+	# return render(request, 'app/submit.html', context_dict)
 
 @csrf_exempt
 def submit_ajax(request):
 	if request.method == 'POST':
-		question = Question()
-		question.question = request.POST.get("question_text")
+		
+		question_text = request.POST.get("question_text")
+		question_data = {}
+		question = Question(question=question_text)
 		question.save()
 
-		question = list(Question.objects.all())
-		question_list = []
-		for q in question:
-			question_list.append({
-				"question": q.question
-			})
+		question_data['results'] = 'Your question has been submitted'
+		question_data['question'] = question.question
+		question_data['published'] = question.published.strftime('%B %d, %Y %I:%M %p')
 
 		return HttpResponse( 
-            json.dumps(question_list),
+            json.dumps(question_data),
             content_type="application/json"
         )
 	else:
