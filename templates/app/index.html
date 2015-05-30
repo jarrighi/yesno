@@ -67,21 +67,6 @@
         <div class="twelve columns">
              <div id="data">
                 <span id="show-data" class="button">Show answers</span>
-                <script type-"text/javascript">
-                $('#show-data').click(function() {
-                    $.ajax({
-                        url: '/answers/{{ qid }}',
-                        error: function() {
-                            $('#info').html('oops');
-                        },
-                        success: function(data) {
-                            $yes = $('<p>').text("People who answered yes: " + data.yesses);
-                            $no = $('<p>').text("People who answered no: " + data.nos);
-                            $('#show-data').append($yes).append($no);
-                        }
-                    });
-                });
-                </script>
             </div>  
         </div>
     </div>
@@ -91,5 +76,9 @@
         
 {% endblock content %}
 
+<script type-"text/javascript">
+var qid = {{ qid }}
+</script>
+<script type-"text/javascript" src="{% static 'js/data.js' %}"></script>
 </body>
 </html>
