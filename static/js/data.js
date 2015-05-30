@@ -7,9 +7,9 @@ $(document).ready(function () {
                 $('#info').html('oops');
             },
             success: function(data) {
-                $yes = $('<p>').text("People who answered yes: " + data.yesses);
-                $no = $('<p>').text("People who answered no: " + data.nos);
-                $('#show-data').append($yes).append($no);
+                var data_html = "<p>People who answered yes: " + data.yesses
+                    + "</p> <p>People who answered no: " + data.nos + "</p>";
+                $('#data').html(data_html);
             }
         });
     });
