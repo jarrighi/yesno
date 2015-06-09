@@ -5,33 +5,36 @@
 
 {% block scripts %}
 <script>
-	console.log("hello")
+
 $(document).ready(function() {
-	console.log("boo")
+
 //submit question on submit
-	$('#submit-form').on('submit', function(event){
+	$('#submit-form').submit(function(event) {
 	    event.preventDefault();
-	    console.log("form submitted!") 
+	    console.log("form submitted!"); 
 	    submit_ajax();
 	});
 
 	// ajax for submit
 	
 	function submit_ajax() {
-		console.log("Submit question is working!")
+		console.log("Submit question is working!");
 		$.ajax({
-            url : "submit/", // the endpoint
+            url : "../submit_ajax/", // the endpoint
             type : "POST", // http method
             data : { the_question : $('#question_text').val() }, // data sent with the post request
             // handle a successful response
             success : function(json) {
                 $('#question_text').val(''); // remove the value from the input
+                console.log("almost there");
                 console.log(json); // log the returned json to the console
-                $("#results").prepend("<strong>"+json.question+"</strong>"+json.results);
+                console.log("nearly");
+                $("#results").html("Thank you for submitting a question!");
                 console.log("success"); // another sanity check
             },
             // handle a non-successful response
             error : function(xhr,errmsg,err) {
+            	console.log("not quite");
                 $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
                     " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
@@ -99,7 +102,7 @@ $(document).ready(function() {
 
 
 {% block content %}
-
+<div class="container">
 <body>
 	<h1>Submit a Question</h1>
 	<form action="/submit_ajax/" id="submit-form" method="POST">
@@ -109,7 +112,7 @@ $(document).ready(function() {
 		</div>
 	    </br>
 	    <div id="submit">
-	    	<input type="submit" value="submit" id="submitButton" />
+	    	<input type="submit" value="submit" id="submitButton"/>
 	    </div>
 	    </br>
 	    <div>
@@ -117,6 +120,7 @@ $(document).ready(function() {
 	    </div>
 	</form>
 </body>
+</div>
 
 {% endblock content %}
 

@@ -14,7 +14,7 @@ def question(request):
 	except:
 		maxid = Question.objects.latest('id').id
 		qid = random.randint(1, maxid)
-	question = Question.objects.get(id=qid) 
+		question = Question.objects.get(id=qid) 
 	text = 	question.question
 	print(text)
 	return render(request, 'app/index.html', {'question': text, 'qid': qid})
@@ -32,33 +32,33 @@ def answer(request, qid, answer, *args):
 	return redirect('/')
 
 def submit(request):
-	if request.method =='POST':
-		print request.POST
+ 	if request.method =='POST':
+ 		print request.POST
 
-	return render(request, 'app/submit.html')
-	# context_dict = {}
-	# return render(request, 'app/submit.html', context_dict)
+ 	return render(request, 'app/submit.html')
+ 	# context_dict = {}
+ 	# return render(request, 'app/submit.html', context_dict)
 
 @csrf_exempt
 def submit_ajax(request):
-	if request.method == 'POST':
+ 	if request.method == 'POST':
 		
-		question_text = request.POST.get("question_text")
-		question_data = {}
-		question = Question(question=question_text)
-		question.save()
+ 		question_text = request.POST.get("question_text")
+ 		question_data = {}
+ 		question = Question(question=question_text)
+ 		question.save()
 
-		question_data['results'] = 'Your question has been submitted'
-		question_data['question'] = question.question
-		question_data['published'] = question.published.strftime('%B %d, %Y %I:%M %p')
+ 		question_data['results'] = 'Your question has been submitted'
+ 		question_data['question'] = question.question
+ 		question_data['published'] = question.published.strftime('%B %d, %Y %I:%M %p')
 
-		return HttpResponse( 
-            json.dumps(question_data),
-            content_type="application/json"
-        )
-	else:
-		return HttpResponse(
-            json.dumps({"nothing to see": "this isn't happening"}),
-            content_type="application/json"
-        )
+ 		return HttpResponse( 
+             json.dumps(question_data),
+             content_type="application/json"
+         )
+ 	else:
+ 		return HttpResponse(
+             json.dumps({"nothing to see": "this isn't happening"}),
+             content_type="application/json"
+         )
 	
