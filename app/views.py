@@ -3,16 +3,12 @@ from app.models import Question, Answer
 import random
 
 def question(request):
-	# questions = Question.objects.order_by('published')
-
-	try:
-		qid = int(request.GET.get("p"))
-	except:
-		maxid = Question.objects.latest('id').id
-		qid = random.randint(1, maxid)
-	question = Question.objects.get(id=qid) 
-	text = 	question.question
+	questions = Question.objects.order_by('published') #get all questions as array
+	q_index = random.randint(0, len(questions)-1) #randomly choose question from query results. This is an int.
+	chosen_question = questions[q_index] #question object from questions array
+	text = 	chosen_question.question #string containing the question
 	print(text)
+	qid = chosen_question.id
 	return render(request, 'app/index.html', {'question': text, 'qid': qid})
 
 
