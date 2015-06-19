@@ -2,11 +2,13 @@ Django==1.7
 argparse==1.2.1
 dj-database-url==0.3.0
 gunicorn==19.2.1
+newrelic==2.52.0.40
 pbr==0.10.0
 psycopg2==2.6
 six==1.8.0
 stevedore==1.1.0
 whitenoise==1.0.6
 wsgiref==0.1.2
+
 
  
