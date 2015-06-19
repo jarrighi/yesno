@@ -1,1 +1,1 @@
-web: gunicorn yesno.wsgi
+web: newrelic-admin run-program gunicorn yesno.wsgi
