@@ -7,19 +7,22 @@
     <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
     <link rel="stylesheet" href="{% static "css/main.css" %}">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    {% block scripts %}{% endblock scripts%}
     <title>{% block title %}YesNo{% endblock title %}</title> 
+
 </head>
 
 <body>
 
 <!-- ******NAV BAR****** -->
 <nav>
-    <div class="logo"><p>YesNo.Ninja</p></div>
+    <div class="logo"><p><a href="/">YesNo.Ninja</a></p></div>
     <div class="menu">
         <ul>
-            <li><a href="submit.html">Submit</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="/submit">Submit</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
         </ul>
     </div>
     <div class="clear"></div>
@@ -54,8 +57,8 @@
   <div class="row">
         <div class="twelve columns">
              <div class="answer">
-                <span class="button yes"><a href="/answer/{{ qid }}/yes">Yes</a></span>
-                <span class="button no"><a href="/answer/{{ qid }}/no">No</a></span>
+                <a href="/answer/{{ qid }}/yes"><span class="button yes">Yes</span></a>
+                <a href="/answer/{{ qid }}/no"><span class="button no">No</span></a>
             </div>  
         </div>
     </div>
