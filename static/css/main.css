@@ -1,3 +1,5 @@
+/***************INDEX PAGE***************/
+
 /****BODY***********/
 
 body {
@@ -118,8 +120,18 @@ nav ul li {
 	font-size: 16px;
 }
 
+/***************SUBMIT PAGE***************/
 
-/****RESPONSIVE***********/
+#submitButton {
+	background-color: #3A3A3A;
+	border-color: #000;
+	color: #E60000;
+	font-size: 16px;
+}
+
+
+
+/*************RESPONSIVE*************/
 
 @media (max-width: 399px) {
 	.container {
@@ -127,3 +139,4 @@ nav ul li {
 	}
 
 }
+
