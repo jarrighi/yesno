@@ -120,6 +120,53 @@ nav ul li {
 	font-size: 16px;
 }
 
+/****DATA DIV***********/
+
+#data {
+	padding: 50px;
+}
+
+.record{
+ float: left;
+ width: 100%;
+ border: 5px solid #444;
+ background-color: #f0f0f0;
+ margin-bottom: 2px;
+ border-radius: 10px;
+ border-radius: 10px;
+ }
+
+.bar {
+ background: #E60000;
+ float: left;
+ clear: left;
+ height: 30px;
+ border-radius: 5px;
+ border-radius: 5px;
+ }
+
+.bar span{
+ color: #fff;
+ float: left;
+ margin-left: 5px;
+ margin-top: 7px;
+ }
+
+.p{
+ padding-top: 3px;
+ float: right;
+ color: #6D8591;
+ clear: right;
+ height: 25px;
+ }
+
+.p span{
+ float: left;
+ margin-right: 5px;
+ margin-top: 5px;
+ }
+
+
 /***************SUBMIT PAGE***************/
 
 #submitButton {

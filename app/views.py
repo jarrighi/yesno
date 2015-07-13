@@ -1,32 +1,44 @@
 from django.shortcuts import render, redirect
-from app.models import Question, Answer
-import random
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from app.models import Question, Answer
+import random
 import json
 
 
 def question(request):
-	questions = Question.objects.order_by('published') #get all questions as array
-	q_index = random.randint(0, len(questions)-1) #randomly choose question from query results. This is an int.
-	chosen_question = questions[q_index] #question object from questions array
-	text = 	chosen_question.question #string containing the question
+  #get all questions as array
+	questions = Question.objects.order_by('published') 
+  #randomly choose question from query results. This is an int.
+	q_index = random.randint(0, len(questions)-1) 
+  #question object from questions array
+	chosen_question = questions[q_index]
+  #string containing the question 
+	text = 	chosen_question.question 
 
 	print(text)
 	qid = chosen_question.id
 	return render(request, 'app/index.html', {'question': text, 'qid': qid})
 
 
-def answer(request, qid, answer, *args):
-	print(qid)
-	print(answer)
-	answermap = {'yes': True, 'no': False}
-	answer = answermap[answer]
-	print answer
-	q = Question.objects.get(id=qid)
-	a = Answer(question = q, answer = answer)
-	a.save()
-	return redirect('/')
+def answer_ajax(request, qid, choice):
+  #Add the users answer to the DB
+  choice = True if choice == 'yes' else False
+  q = Question.objects.get(id=qid)
+  a = Answer(question = q, answer = choice)
+  a.save()
+
+  # Get answer data to send back to user
+  response_content = {}
+  yesses = Answer.objects.filter(question=qid, answer=True).count()
+  response_content['yesses'] = yesses
+  nos = Answer.objects.filter(question=qid, answer=False).count()
+  response_content['nos'] = nos
+  
+  return HttpResponse(
+            json.dumps(response_content), 
+            content_type="application/json"
+            )
 
 def submit(request):
  	if request.method =='POST':
