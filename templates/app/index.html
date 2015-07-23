@@ -54,18 +54,28 @@
 
 <!-- ******ANSWER ROW****** -->
 
-  <div class="row">
+    <div class="row">
         <div class="twelve columns">
              <div class="answer">
-                <a href="/answer/{{ qid }}/yes"><span class="button yes">Yes</span></a>
-                <a href="/answer/{{ qid }}/no"><span class="button no">No</span></a>
+                <span id = "yes-button" class="button" data-choice="yes">Yes</span>
+                <span id = "no-button" class="button" data-choice="no">No</span>
             </div>  
         </div>
     </div>
 
+<!-- ******DATA ROW****** -->
+
+    <div class="row">
+        <div class="twelve columns">
+            <div id="data">
+            </div>  
+        </div>
+    </div>
 
 </div>
-        
+
+<script type-"text/javascript"> var qid = {{ qid }} </script>
+<script src="{% static 'js/answer.js'%}"></script>
 {% endblock content %}
 
 </body>
