@@ -1,0 +1,35 @@
+{% extends 'yesno/../app/index.html' %}
+{% load static from staticfiles %}
+
+	
+
+{% block scripts %}
+
+{% endblock scripts%}
+
+
+{% block content %}
+
+<div class="container">
+<body>
+	<h1>Sign Up</h1>
+	<form action="/signup/" id="submit-form" method="POST">
+    {% csrf_token %}
+	    <div id='username'>
+		    <input name="username" placeholder="Choose Your Ninja Name">
+		</div>
+	    </br>
+	    <div id='password'>
+		    <input name="password" placeholder="Choose a Secret Password" type="password">
+		</div>
+	    </br>
+	    <div id="submit">
+	    	<input type="submit" value="Sign Up" id="submitButton"/>
+	    </div>
+	    
+	</form>
+</body>
+</div>
+
+{% endblock content %}
+

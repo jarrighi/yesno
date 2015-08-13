@@ -1,4 +1,4 @@
--dfrom django.shortcuts import render, redirect
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from app.models import Question, Answer
@@ -75,4 +75,4 @@ def submit_ajax(request):
 def signup(request):
     if request.method == "POST":
         User.objects.create_user(request.POST["username"], None, request.POST["password"])
-    return render(request, 'yesno/signup.html')
+    return render(request, 'app/signup.html')
