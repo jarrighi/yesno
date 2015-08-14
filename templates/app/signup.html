@@ -13,8 +13,12 @@
 <div class="container">
 <body>
 	<h1>Sign Up</h1>
-	<form action="/signup/" id="submit-form" method="POST">
+	<form action="/signup/" id="signup-form" method="POST">
     {% csrf_token %}
+    	<div id='email'>
+		    <input name="email" placeholder="Your Email Address">
+		</div>
+	    </br>
 	    <div id='username'>
 		    <input name="username" placeholder="Choose Your Ninja Name">
 		</div>

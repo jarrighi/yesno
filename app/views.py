@@ -74,5 +74,5 @@ def submit_ajax(request):
 	
 def signup(request):
     if request.method == "POST":
-        User.objects.create_user(request.POST["username"], None, request.POST["password"])
+        User.objects.create_user(request.POST["username"], request.POST["email"], request.POST["password"])
     return render(request, 'app/signup.html')
