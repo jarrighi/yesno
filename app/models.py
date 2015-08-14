@@ -8,7 +8,7 @@ class Question(models.Model):
 
 	def __unicode__(self):
 		# return "Question # {}".format(self.id)
-		return self.question
+		return str(self.question)
 
 class Answer(models.Model):
 	user = models.ForeignKey(User, null=True)
