@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from app.models import Question, Answer
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 import random
 import json
@@ -74,12 +75,30 @@ def submit_ajax(request):
 	
 def signup(request):
   if request.method == "POST":
-      email = request.POST.get("email")
-      if not email:
-        raise ValueError('Users must have an email address')
-      password = request.POST.get("password")
-      if not password:
-        raise ValueError('Please create a password')
-      new_user = User.objects.create_user(request.POST["username"], request.POST["email"], request.POST["password"])
+    email = request.POST.get("email")
+    if not email:
+      raise ValueError('Users must have an email address')
+    password = request.POST.get("password")
+    if not password:
+      raise ValueError('Please create a password')
+    new_user = User.objects.create_user(request.POST["username"], request.POST["email"], request.POST["password"])
 
   return render(request, 'app/signup.html')
+
+def login(request):
+  if request.method == "POST":
+    user = authenticate(username=request.POST["username"], password=request.POST["password"])
+    if user is not None:
+    # the password verified for the user
+      if user.is_active:
+        print "User is valid, active and authenticated"
+        return redirect('/')
+      else:
+        print "The password is valid, but the account has been disabled!"
+    else:
+        # the authentication system was unable to verify the username and password
+        print "The username and password were incorrect."
+
+  return render(request, 'app/login.html')
+
+
