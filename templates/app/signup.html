@@ -15,17 +15,12 @@
 	<h1>Sign Up</h1>
 	<form action="/signup/" id="signup-form" method="POST">
     {% csrf_token %}
-    	<div id='email'>
-		    <input name="email" placeholder="Your Email Address">
-		</div>
-	    </br>
-	    <div id='username'>
-		    <input name="username" placeholder="Choose Your Ninja Name">
-		</div>
-	    </br>
-	    <div id='password'>
-		    <input name="password" placeholder="Choose a Secret Password" type="password">
-		</div>
+    	{% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field }}
+        {% endfor %}
+
 	    </br>
 	    <div id="submit">
 	    	<input type="submit" value="Sign Up" id="submitButton"/>
