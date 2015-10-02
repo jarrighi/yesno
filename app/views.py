@@ -83,7 +83,7 @@ def signup(request):
 
       # Now call the index() view.
       # The user will be shown the homepage.
-      return index(request)
+      return question(request)
     else:
         # The supplied form contained errors - just print them to the terminal.
       print form.errors
