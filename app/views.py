@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from app.models import Question, Answer
+from app.forms import UserForm
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 import random
 import json
 
@@ -71,3 +74,40 @@ def submit_ajax(request):
              content_type="application/json"
          )
 	
+def signup(request):
+  if request.method == "POST":
+    form = UserForm(request.POST)
+    if form.is_valid():
+            # Save the new category to the database.
+      form.save(commit=True)
+
+      # Now call the index() view.
+      # The user will be shown the homepage.
+      return question(request)
+    else:
+        # The supplied form contained errors - just print them to the terminal.
+      print form.errors
+  else:
+      # If the request was not a POST, display the form to enter details.
+    form = UserForm()
+
+    # Bad form (or form details), no form supplied...
+    # Render the form with error messages (if any).
+  return render(request, 'app/signup.html', {'form': form})
+  
+
+def login(request):
+  if request.method == "POST":
+    user = authenticate(username=request.POST["username"], password=request.POST["password"])
+    if user is not None:
+    # the password verified for the user
+      if user.is_active:
+        print "User is valid, active and authenticated"
+        return redirect('/')
+      else:
+        print "The password is valid, but the account has been disabled!"
+    else:
+        # the authentication system was unable to verify the username and password
+        print "The username and password were incorrect."
+
+  return render(request, 'app/login.html')

@@ -1,0 +1,36 @@
+{% extends 'yesno/../app/index.html' %}
+{% load static from staticfiles %}
+
+	
+
+{% block scripts %}
+
+{% endblock scripts%}
+
+
+{% block content %}
+
+<div class="container">
+<body>
+	<h1>Sign Up</h1>
+	<form action="/signup/" id="signup-form" method="POST">
+    {% csrf_token %}
+    	{% for field in form.visible_fields %}
+            {{ field.errors }}
+            </br>
+            {{ field.help_text }}
+            </br>
+            {{ field }}
+        {% endfor %}
+
+	    </br>
+	    <div id="submit">
+	    	<input type="submit" value="Sign Up" id="submitButton"/>
+	    </div>
+	    
+	</form>
+</body>
+</div>
+
+{% endblock content %}
+
