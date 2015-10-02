@@ -94,15 +94,7 @@ def signup(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
   return render(request, 'app/signup.html', {'form': form})
-  #   email = request.POST.get("email")
-  #   if not email:
-  #     raise ValueError('Users must have an email address')
-  #   password = request.POST.get("password")
-  #   if not password:
-  #     raise ValueError('Please create a password')
-  #   new_user = User.objects.create_user(request.POST["username"], request.POST["email"], request.POST["password"])
-
-  # return render(request, 'app/signup.html')
+  
 
 def login(request):
   if request.method == "POST":
@@ -119,4 +111,3 @@ def login(request):
         print "The username and password were incorrect."
 
   return render(request, 'app/login.html')
-
