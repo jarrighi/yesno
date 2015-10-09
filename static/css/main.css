@@ -105,6 +105,7 @@ nav ul li {
 
 .answer span {
 	width: 30%;
+	color: #E60000;
 }
 
 .yes {
@@ -119,6 +120,9 @@ nav ul li {
 .answer a {
 	font-size: 16px;
 }
+
+.answer span:hover{
+  color: #888; }
 
 /****DATA DIV***********/
 
