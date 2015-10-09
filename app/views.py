@@ -78,11 +78,11 @@ def signup(request):
   if request.method == "POST":
     form = UserForm(request.POST)
     if form.is_valid():
-            # Save the new category to the database.
-      form.save(commit=True)
-
-      # Now call the index() view.
-      # The user will be shown the homepage.
+            
+      user = form.save()
+      user.set_password(user.password)
+      user.save()
+      
       return question(request)
     else:
         # The supplied form contained errors - just print them to the terminal.
@@ -108,6 +108,6 @@ def login(request):
         print "The password is valid, but the account has been disabled!"
     else:
         # the authentication system was unable to verify the username and password
-        print "The username and password were incorrect."
+      print "The username and password were incorrect."
 
   return render(request, 'app/login.html')
