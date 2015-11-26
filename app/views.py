@@ -4,11 +4,12 @@ from django.http import HttpResponse
 from app.models import Question, Answer
 from app.forms import UserForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import random
 import json
 
-
+@login_required(login_url='/login')
 def question(request):
   #get all questions as array
 	questions = Question.objects.order_by('published') 
