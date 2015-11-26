@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from app.models import Question, Answer
 from app.forms import UserForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 import random
 import json
@@ -96,13 +96,14 @@ def signup(request):
   return render(request, 'app/signup.html', {'form': form})
   
 
-def login(request):
+def loginview(request):
   if request.method == "POST":
     user = authenticate(username=request.POST["username"], password=request.POST["password"])
     if user is not None:
     # the password verified for the user
       if user.is_active:
         print "User is valid, active and authenticated"
+        login(request, user)
         return redirect('/')
       else:
         print "The password is valid, but the account has been disabled!"
@@ -110,4 +111,8 @@ def login(request):
         # the authentication system was unable to verify the username and password
       print "The username and password were incorrect."
 
+  return render(request, 'app/login.html')
+
+def logoutview(request):
+  logout(request)
   return render(request, 'app/login.html')
