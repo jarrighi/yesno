@@ -44,7 +44,7 @@ def answer_ajax(request, qid, choice):
             content_type="application/json"
             )
 
-def submit(request):
+def submit_q(request):
  	if request.method =='POST':
  		print request.POST
 
@@ -53,7 +53,7 @@ def submit(request):
  	# return render(request, 'app/submit.html', context_dict)
 
 @csrf_exempt
-def submit_ajax(request):
+def submit_q_ajax(request):
  	if request.method == 'POST':
 		
  		question_text = request.POST.get("question_text")
