@@ -22,6 +22,21 @@ class UserForm(forms.ModelForm):
                               widget=forms.PasswordInput, 
                               required=True)
 
+  def clean_password2(self):
+    pass1 = self.cleaned_data.get('password1')
+    pass2 = self.cleaned_data.get('password2')
+    if pass1 and pass2 and pass1 != pass2:
+      raise forms.ValidationError("Passwords don't match")
+    return pass2
+  
+  def save(self, commit=True):
+    # Save the provided password in hashed format
+    user = super(UserForm, self).save(commit=False)
+    user.set_password(self.cleaned_data["password1"])
+    if commit:
+      user.save()
+    return user
+
   class Meta:
     # Provide an association between the ModelForm and a model
     model = User

@@ -80,12 +80,7 @@ def signup(request):
   if request.method == "POST":
     form = UserForm(request.POST)
     if form.is_valid():
-      user = form.save()
-      if form.data['password1'] == form.data['password2']:
-        user.set_password(form.data['password2'])
-        user.save()
-      else:
-        raise forms.ValidationError("Passwords don't match")
+      form.save()
       return question(request)
     else:
         # The supplied form contained errors - just print them to the terminal.
