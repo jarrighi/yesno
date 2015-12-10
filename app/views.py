@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django import forms
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from app.models import Question, Answer
@@ -79,11 +80,12 @@ def signup(request):
   if request.method == "POST":
     form = UserForm(request.POST)
     if form.is_valid():
-            
       user = form.save()
-      user.set_password(user.password)
-      user.save()
-      
+      if form.data['password1'] == form.data['password2']:
+        user.set_password(form.data['password2'])
+        user.save()
+      else:
+        raise forms.ValidationError("Passwords don't match")
       return question(request)
     else:
         # The supplied form contained errors - just print them to the terminal.
