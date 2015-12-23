@@ -28,6 +28,13 @@ class UserForm(forms.ModelForm):
     if pass1 and pass2 and pass1 != pass2:
       raise forms.ValidationError("Passwords don't match")
     return pass2
+
+  def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if email and User.objects.filter(email=email).count():
+            raise forms.ValidationError('Email already used.')
+        return email
   
   def save(self, commit=True):
     # Save the provided password in hashed format

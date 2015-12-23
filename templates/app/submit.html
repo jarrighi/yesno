@@ -20,7 +20,7 @@ $(document).ready(function() {
 	function submit_ajax() {
 		console.log("Submit question is working!");
 		$.ajax({
-            url : "../submit_ajax/", // the endpoint
+            url : "../submit_q_ajax/", // the endpoint
             type : "POST", // http method
             data : { the_question : $('#question_text').val() }, // data sent with the post request
             // handle a successful response
