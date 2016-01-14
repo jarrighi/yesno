@@ -13,7 +13,7 @@ import json
 @login_required(login_url='/login')
 def question(request):
   #get all questions as array
-	questions = Question.objects.order_by('published') 
+	questions = Question.objects.exclude(question=None).order_by('published') 
   #randomly choose question from query results. This is an int.
 	q_index = random.randint(0, len(questions)-1) 
   #question object from questions array
@@ -55,23 +55,24 @@ def submit_q(request):
 
 @csrf_exempt
 def submit_q_ajax(request):
- 	if request.method == 'POST':
-		
- 		question_text = request.POST.get("question_text")
- 		question_data = {}
- 		question = Question(question=question_text)
- 		question.save()
+  if request.method == 'POST':
+    question_text = request.POST.get("question_text")
+    print question_text
+    question_data = {}
+    question = Question(question=question_text)
+    question.save()
+    print question.question
 
- 		question_data['results'] = 'Your question has been submitted'
- 		question_data['question'] = question.question
- 		question_data['published'] = question.published.strftime('%B %d, %Y %I:%M %p')
+    question_data['results'] = 'Your question has been submitted'
+    question_data['question'] = question.question
+    question_data['published'] = question.published.strftime('%B %d, %Y %I:%M %p')
 
- 		return HttpResponse( 
-             json.dumps(question_data),
-             content_type="application/json"
-         )
- 	else:
- 		return HttpResponse(
+    return HttpResponse( 
+          json.dumps(question_data),
+         content_type="application/json"
+     )
+  else:
+    return HttpResponse(
              json.dumps({"nothing to see": "this isn't happening"}),
              content_type="application/json"
          )
