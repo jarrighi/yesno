@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from app.models import Question, Answer
-from app.forms import UserForm
+from app.forms import UserForm, QuestionForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -46,36 +47,18 @@ def answer_ajax(request, qid, choice):
             )
 
 def submit_q(request):
- 	if request.method =='POST':
- 		print request.POST
-
- 	return render(request, 'app/submit.html')
- 	# context_dict = {}
- 	# return render(request, 'app/submit.html', context_dict)
-
-@csrf_exempt
-def submit_q_ajax(request):
-  if request.method == 'POST':
-    question_text = request.POST.get("question_text")
-    print question_text
-    question_data = {}
-    question = Question(question=question_text)
-    question.save()
-    print question.question
-
-    question_data['results'] = 'Your question has been submitted'
-    question_data['question'] = question.question
-    question_data['published'] = question.published.strftime('%B %d, %Y %I:%M %p')
-
-    return HttpResponse( 
-          json.dumps(question_data),
-         content_type="application/json"
-     )
+  if request.method =='POST':
+    form = QuestionForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return HttpResponseRedirect(reverse('submit_q'))
+    else:
+      print form.errors
   else:
-    return HttpResponse(
-             json.dumps({"nothing to see": "this isn't happening"}),
-             content_type="application/json"
-         )
+    form = QuestionForm()
+
+  return render(request, 'app/submit.html', {'form': form})
+ 	
 	
 def signup(request):
   if request.method == "POST":

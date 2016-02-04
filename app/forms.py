@@ -1,5 +1,5 @@
 from django import forms
-from app.models import User
+from app.models import User, Question
 
 class UserForm(forms.ModelForm):
   username = forms.CharField(help_text="Choose your Ninja name (must be at least 5 characters long)",
@@ -42,9 +42,21 @@ class UserForm(forms.ModelForm):
     user.set_password(self.cleaned_data["password1"])
     if commit:
       user.save()
-    return user
 
   class Meta:
     # Provide an association between the ModelForm and a model
     model = User
     fields = ('username', 'email')
+
+class QuestionForm(forms.ModelForm):
+  question = forms.CharField(help_text="Write a yes/no question.",
+                              min_length=12,
+                              max_length=500,
+                              required=True)
+
+  class Meta:
+
+    model = Question
+    fields = ('question',)
+  
+    

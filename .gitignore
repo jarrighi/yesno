@@ -53,4 +53,7 @@ docs/_build/
 # PyBuilder
 target/
 
+# Mac hidden file that stores custom attributes
+.DS_Store
+
 
