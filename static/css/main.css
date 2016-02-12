@@ -173,6 +173,12 @@ nav ul li {
 
 /***************SUBMIT PAGE***************/
 
+.messages p {
+	color: #8B0000;
+	font-size: 16px;
+	font-weight: bolder;
+}
+
 #submitButton {
 	background-color: #3A3A3A;
 	border-color: #000;

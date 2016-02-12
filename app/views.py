@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from app.models import Question, Answer
 from app.forms import UserForm, QuestionForm
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -51,6 +52,7 @@ def submit_q(request):
     form = QuestionForm(request.POST)
     if form.is_valid():
       form.save()
+      messages.add_message(request, messages.SUCCESS, "Thanks for submitting a question")
       return HttpResponseRedirect(reverse('submit_q'))
     else:
       print form.errors
