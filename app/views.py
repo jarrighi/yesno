@@ -15,17 +15,18 @@ import json
 @login_required(login_url='/login')
 def question(request):
   #get all questions as array
-	questions = Question.objects.exclude(question=None).order_by('published') 
+  questions = Question.objects.exclude(question=None).order_by('published') 
   #randomly choose question from query results. This is an int.
-	q_index = random.randint(0, len(questions)-1) 
+  q_index = random.randint(0, len(questions)-1) 
   #question object from questions array
-	chosen_question = questions[q_index]
+  chosen_question = questions[q_index]
   #string containing the question 
-	text = 	chosen_question.question 
+  text = 	chosen_question.question 
 
-	print(text)
-	qid = chosen_question.id
-	return render(request, 'app/index.html', {'question': text, 'qid': qid})
+  print(text)
+  print request.user.id
+  qid = chosen_question.id
+  return render(request, 'app/index.html', {'question': text, 'qid': qid})
 
 
 def answer_ajax(request, qid, choice):
@@ -52,7 +53,7 @@ def submit_q(request):
   if request.method =='POST':
     form = QuestionForm(request.POST)
     if form.is_valid():
-      form.save()
+      form.save(request.user)
       messages.add_message(request, messages.SUCCESS, "Thanks for submitting a question")
       return HttpResponseRedirect(reverse('submit_q'))
     else:
