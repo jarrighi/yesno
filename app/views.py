@@ -47,6 +47,7 @@ def answer_ajax(request, qid, choice):
             content_type="application/json"
             )
 
+@login_required(login_url='/login')
 def submit_q(request):
   if request.method =='POST':
     form = QuestionForm(request.POST)
