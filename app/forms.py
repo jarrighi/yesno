@@ -53,6 +53,14 @@ class QuestionForm(forms.ModelForm):
                               min_length=12,
                               max_length=500,
                               required=True)
+ # user = forms.IntegerField(widget=forms.HiddenInput())
+  def save(self, user, commit=True):
+    # Save the provided password in hashed format
+    question = super(QuestionForm, self).save(commit=False)
+    question.user = user
+    if commit:
+      question.save()
+
 
   class Meta:
 
