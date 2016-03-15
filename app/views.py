@@ -33,7 +33,7 @@ def answer_ajax(request, qid, choice):
   #Add the users answer to the DB
   choice = True if choice == 'yes' else False
   q = Question.objects.get(id=qid)
-  a = Answer(question = q, answer = choice)
+  a = Answer(question = q, answer = choice, user=request.user)
   a.save()
 
   # Get answer data to send back to user
