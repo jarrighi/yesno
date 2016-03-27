@@ -14,19 +14,10 @@ import json
 
 @login_required(login_url='/login')
 def question(request):
-  #get all questions as array
-  questions = Question.objects.exclude(question=None).order_by('published') 
-  #randomly choose question from query results. This is an int.
-  q_index = random.randint(0, len(questions)-1) 
-  #question object from questions array
-  chosen_question = questions[q_index]
-  #string containing the question 
-  text = 	chosen_question.question 
-
-  print(text)
-  print request.user.id
-  qid = chosen_question.id
-  return render(request, 'app/index.html', {'question': text, 'qid': qid})
+  uid = request.user.id
+  # get one random question the current user has not answered
+  question = Question.objects.exclude(answer__user=uid).order_by('?')[0]
+  return render(request, 'app/index.html', {'question': question})
 
 
 def answer_ajax(request, qid, choice):
