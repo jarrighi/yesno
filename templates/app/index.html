@@ -42,7 +42,7 @@
                     </li>
                     <li id="question">
                         <h1>Q:</h1>
-                        <p>{{ question }}</p>
+                        <p>{{ question.question }}</p>
                     </li>
                     <li id="next">
                         <a href="/"><i class="fa fa-chevron-right fa-2x"></i></a>
@@ -75,7 +75,7 @@
 
 </div>
 
-<script type-"text/javascript"> var qid = {{ qid }} </script>
+<script type-"text/javascript"> var qid = {{ question.id }} </script>
 <script src="{% static 'js/answer.js'%}"></script>
 {% endblock content %}
 
