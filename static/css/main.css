@@ -2,18 +2,18 @@
 
 /****BODY***********/
 
-body {
+/*body {
 	background-color: #888;
 }
 
 a {
 	text-decoration: none;
 	color: #E60000;
-}
+}*/
 
 /****MAIN NAV**********/
 
-nav {
+/*nav {
 	background-color: #3A3A3A;
 	height: 60px;
     padding: 0 20px;
@@ -41,18 +41,18 @@ nav ul li {
 
 .menu ul li a {
 	margin: 0 5px;
-}
+}*/
 
 /****CONTAINER*********/
 
-.container {
+/*.container {
 	text-align: center;
-}
+}*/
 
 /****QUESTION DIV**********/
 
 
-#next, #last, #question {
+/*#next, #last, #question {
 	display: inline-block;
 }
 
@@ -86,9 +86,9 @@ nav ul li {
 	margin-right: 10px;
 	margin-bottom: 0px;
 	padding: 2%;
-}
+}*/
 
-#question p{ 
+/*#question p{ 
 	font-size: 1.75rem;
 	padding: 2%;
 	text-align: left;
@@ -96,14 +96,14 @@ nav ul li {
 
 .clear {
 	clear: both;
-}
+}*/
 
 
 
 
 /****ANSWER DIV***********/
 
-.answer span {
+/*.answer span {
 	width: 30%;
 	color: #E60000;
 }
@@ -122,11 +122,11 @@ nav ul li {
 }
 
 .answer span:hover{
-  color: #888; }
+  color: #888; }*/
 
 /****DATA DIV***********/
 
-#data {
+/*#data {
 	padding: 50px;
 }
 
@@ -168,12 +168,12 @@ nav ul li {
  float: left;
  margin-right: 5px;
  margin-top: 5px;
- }
+ }*/
 
 
 /***************SUBMIT PAGE***************/
 
-.messages p {
+/*.messages p {
 	color: #8B0000;
 	font-size: 16px;
 	font-weight: bolder;
@@ -185,7 +185,7 @@ nav ul li {
 	color: #E60000;
 	font-size: 16px;
 }
-
+*/
 
 
 /*************RESPONSIVE*************/

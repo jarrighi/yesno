@@ -1,35 +1,68 @@
-{% extends 'yesno/../app/index.html' %}
+{% extends 'yesno/../app/base.html' %}
 {% load static from staticfiles %}
 
-	
-
 {% block scripts %}
-
 {% endblock scripts%}
 
+{% block title %}YesNo - Login{% endblock title %}
 
 {% block content %}
+<div class="row">
+	<div class="col-lg-3">
+	</div>
+	<div class="col-lg-6">
+		<div class="well bs-component">
+		<form class="form-horizontal" action="/login/" id="login-form" method="POST">
+			{% csrf_token %}
+		  <fieldset>
+		    <legend>Login</legend>
+		    <div class="form-group">
+		      <label for="inputEmail" class="col-lg-2 control-label">Username</label>
+		      <div class="col-lg-10">
+		        <input type="text" class="form-control" name="username" id="inputEmail" placeholder="Your Ninja Name">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+		      <div class="col-lg-10">
+		        <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Secret Password">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-lg-10 col-lg-offset-2">
+		        <button type="submit" class="btn btn-primary" id="submitButton">Login</button>
+		      </div>
+		    </div>
+		  </fieldset>
+		</form>
+		</div>
+	</div>
+	<div class="col-lg-3">
+	</div>
+</div>
 
-<div class="container">
+<!-- <div class="container">
 <body>
 	<h1>Login</h1>
-	<form action="/login/" id="login-form" method="POST">
-    {% csrf_token %}	    
-	  <div id='username'>
+	<form class="form-horizontal" action="/login/" id="login-form" method="POST"> -->
+    <!-- {% csrf_token %}	     -->
+	  <!-- <div id='username'>
 		  <input name="username" placeholder="Your Ninja Name" type="text">
 		</div>
-	    </br>
-	  <div id='password'>
+	    </br> -->
+	  <!-- div id='password'>
 		  <input name="password" placeholder="Secret Password" type="password">
 		</div>
-	    </br>
-	  <div id="submit">
+	    </br> -->
+	  <!-- <div id="submit">
 	   	<input type="submit" value="Login" id="submitButton"/>
 	  </div>
 	    
 	</form>
 </body>
-</div>
+</div> -->
 
 {% endblock content %}
+
+
 

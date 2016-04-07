@@ -1,45 +1,18 @@
+{% extends 'yesno/../app/base.html' %}
 {% load static from staticfiles %}
-<html>
 
-<head lang="en">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
-    <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
-    <link rel="stylesheet" href="{% static "css/main.css" %}">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    {% block scripts %}{% endblock scripts%}
-    <title>{% block title %}YesNo{% endblock title %}</title> 
+{% block scripts %}
+{% endblock scripts%}
 
-</head>
+{% block title %}YesNo - Answer a Question{% endblock title %}
 
-<body>
-
-<!-- ******NAV BAR****** -->
-<nav>
-    <div class="logo"><p><a href="/">YesNo.Ninja</a></p></div>
-    <div class="menu">
-        <ul>
-            {% if user.is_authenticated %}
-            <li><a href="/submit_q">Submit</a></li>
-            <li><a href="/logout">Logout</a></li>
-
-            {% else %}
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            {% endif %}
-            
-        </ul>
-    </div>
-    <div class="clear"></div>
-</nav>
 
 {% block content %}
-<div class="container">
-
+<div class="jumbotron">
+  
 <!-- ******QUESTION ROW****** -->
     <div class="row">
-        <div class="twelve columns">
+        <div class="col-lg-12">
             <div class="question-nav">
                 <ul>
                     <li id="last">
@@ -61,13 +34,15 @@
 <!-- ******ANSWER ROW****** -->
 
     <div class="row">
-        <div class="twelve columns">
+        <div class="col-lg-12">
              <div class="answer">
-                <span id = "yes-button" class="button" data-choice="yes">Yes</span>
-                <span id = "no-button" class="button" data-choice="no">No</span>
+                <p><a id = "yes-button" class="btn btn-primary btn-lg" data-choice="yes">Yes</a></p>
+                <p><a id = "no-button" class="btn btn-primary btn-lg" data-choice="no">No</a></p>
             </div>  
         </div>
     </div>
+
+</div>
 
 <!-- ******DATA ROW****** -->
 
@@ -78,11 +53,8 @@
         </div>
     </div>
 
-</div>
-
 <script type-"text/javascript"> var qid = {{ question.id }} </script>
 <script src="{% static 'js/answer.js'%}"></script>
 {% endblock content %}
 
-</body>
-</html>
+

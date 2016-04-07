@@ -1,4 +1,4 @@
-var answerButtons = document.querySelectorAll(".answer .button");
+var answerButtons = document.querySelectorAll(".answer .btn");
 for (var i = 0; i < answerButtons.length; i++) {
     answerButtons[i].addEventListener('click', function() {
         var choice = this.dataset.choice;

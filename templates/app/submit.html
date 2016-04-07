@@ -1,11 +1,13 @@
-{% extends 'yesno/../app/index.html' %}
+{% extends 'yesno/../app/base.html' %}
 {% load static from staticfiles %}
 
-{% block scripts %}{% endblock scripts%}
+{% block scripts %}
+{% endblock scripts%}
+
+{% block title %}YesNo - Ask a Question{% endblock title %}
 
 {% block content %}
-<div class="container">
-<body>
+
 	<h1>Submit a Question</h1>
   {% if messages %}
   <div class="messages">
@@ -32,8 +34,6 @@
 	    	<p id="results"></p>
 	    </div>
 	</form>
-</body>
-</div>
 
 {% endblock content %}
 
