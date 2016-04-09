@@ -38,6 +38,7 @@
 <div class="container">
 
 <!-- ******QUESTION ROW****** -->
+    {% if question %}
     <div class="row">
         <div class="twelve columns">
             <div class="question-nav">
@@ -58,6 +59,7 @@
         </div>
     </div>
 
+
 <!-- ******ANSWER ROW****** -->
 
     <div class="row">
@@ -69,6 +71,8 @@
         </div>
     </div>
 
+
+
 <!-- ******DATA ROW****** -->
 
     <div class="row">
@@ -77,6 +81,28 @@
             </div>  
         </div>
     </div>
+
+    {% else %}
+    <div class="row">
+        <div class="twelve columns">
+            <div class="question-nav">
+                <ul>
+                <li id='question'>
+                    <h1></h1>
+                    <p>You've answered every question!</p>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+             <div class="answer">
+                <a href="submit_q"><span class="button">Submit a new question</span></a>
+            </div>  
+        </div>
+    </div>
+    {% endif %}
 
 </div>
 
