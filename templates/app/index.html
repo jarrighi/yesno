@@ -8,50 +8,51 @@
 
 
 {% block content %}
-<div class="jumbotron">
+
   
 <!-- ******QUESTION ROW****** -->
+<div class="question-nav">
     <div class="row">
-        <div class="col-lg-12">
-            <div class="question-nav">
-                <ul>
-                    <li id="last">
-                        <a href="/"><i class="fa fa-chevron-left fa-2x"></i></a>
-                    </li>
-                    <li id="question">
-                        <h1>Q:</h1>
-                        <p>{{ question.question }}</p>
-                    </li>
-                    <li id="next">
-                        <a href="/"><i class="fa fa-chevron-right fa-2x"></i></a>
-                    </li>
-                </ul>
-
-            </div>
+        <div class="col-lg-2" id="last">
+            <span class="pull-right"><a href="/"><i class="fa fa-chevron-left fa-2x"></i></a></span>
         </div>
+        <div class="jumbotron col-lg-8" id="question">   
+            <h1>Q:</h1>
+            <p>{{ question.question }}</p>
+        </div>
+        <div class="col-lg-2" id="next">
+            <span><a href="/"><i class="fa fa-chevron-right fa-2x"></i></a></span>
+        </div>              
     </div>
+</div>
 
 <!-- ******ANSWER ROW****** -->
 
-    <div class="row">
-        <div class="col-lg-12">
-             <div class="answer">
-                <p><a id = "yes-button" class="btn btn-primary btn-lg" data-choice="yes">Yes</a></p>
-                <p><a id = "no-button" class="btn btn-primary btn-lg" data-choice="no">No</a></p>
-            </div>  
-        </div>
+<div class="row">
+    <div class="col-lg-2">
     </div>
-
+    <div class="answer">
+        <div class="col-lg-4">
+            <p><a id="yes-button" class="btn btn-primary btn-lg pull-right" data-choice="yes">Yes</a></p>
+        </div>
+        <div class="col-lg-4">
+            <p><a id="no-button" class="btn btn-primary btn-lg" data-choice="no">No</a></p>
+        </div>  
+    </div>
+    <div class="col-lg-2">
+    </div>
 </div>
+
+
 
 <!-- ******DATA ROW****** -->
 
-    <div class="row">
-        <div class="twelve columns">
-            <div id="data">
-            </div>  
-        </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="data">
+        </div>  
     </div>
+</div>
 
 <script type-"text/javascript"> var qid = {{ question.id }} </script>
 <script src="{% static 'js/answer.js'%}"></script>
