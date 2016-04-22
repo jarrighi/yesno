@@ -16,7 +16,10 @@ import json
 def question(request):
   uid = request.user.id
   # get one random question the current user has not answered
-  question = Question.objects.exclude(answer__user=uid).order_by('?')[0]
+  try: 
+    question = Question.objects.exclude(answer__user=uid).order_by('?')[0]
+  except IndexError:
+    return render(request, 'app/index.html')
   return render(request, 'app/index.html', {'question': question})
 
 

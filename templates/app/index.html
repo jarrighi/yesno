@@ -11,7 +11,11 @@
 
   
 <!-- ******QUESTION ROW****** -->
+
 <div class="question-nav">
+
+    {% if question %}
+
     <div class="row">
         <div class="col-lg-2" id="last">
             <span class="pull-right"><a href="/"><i class="fa fa-chevron-left fa-2x"></i></a></span>
@@ -25,6 +29,7 @@
         </div>              
     </div>
 </div>
+
 
 <!-- ******ANSWER ROW****** -->
 
@@ -45,6 +50,8 @@
 
 
 
+
+
 <!-- ******DATA ROW****** -->
 
 <div class="row">
@@ -52,6 +59,29 @@
         <div id="data">
         </div>  
     </div>
+
+    {% else %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="question-nav">
+                <ul>
+                <li id='question'>
+                    <h1></h1>
+                    <p>You've answered every question!</p>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+             <div class="answer">
+                <a href="submit_q"><span class="button">Submit a new question</span></a>
+            </div>  
+        </div>
+    </div>
+    {% endif %}
+
 </div>
 
 <script type-"text/javascript"> var qid = {{ question.id }} </script>
