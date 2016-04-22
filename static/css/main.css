@@ -1,6 +1,19 @@
 /***************INDEX PAGE***************/
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
 
+#last span {
+	padding: 100% 0%;
+}
+
+#next span {
+	padding: 100% 0%;
+}
 
 /****BODY***********/
 
