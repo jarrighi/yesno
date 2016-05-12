@@ -1,0 +1,214 @@
+/***************INDEX PAGE***************/
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+#last span {
+	padding: 100% 0%;
+}
+
+#next span {
+	padding: 100% 0%;
+}
+
+/****BODY***********/
+
+/*body {
+	background-color: #888;
+}
+
+a {
+	text-decoration: none;
+	color: #E60000;
+}*/
+
+/****MAIN NAV**********/
+
+/*nav {
+	background-color: #3A3A3A;
+	height: 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+nav ul li {
+	list-style: none;
+	display: inline-block;
+}
+
+.logo {
+	float: left;
+	padding: 15px 5px;
+}
+
+.logo p {
+	color: #FFF;
+}
+
+.menu {
+	float: right;
+	padding: 15px 5px;
+}
+
+.menu ul li a {
+	margin: 0 5px;
+}*/
+
+/****CONTAINER*********/
+
+/*.container {
+	text-align: center;
+}*/
+
+/****QUESTION DIV**********/
+
+
+/*#next, #last, #question {
+	display: inline-block;
+}
+
+#next a {
+	width: 10%;
+}
+
+#last a {
+	width: 10%;
+}
+
+#question {
+	border: 5px #000 solid;
+	background-color: #FFF;
+	width: 80%;
+	max-width: 960px;
+}
+
+.question-nav {
+	padding-top: 7%;
+	padding-bottom: 5%;
+}
+
+.question-nav ul{
+	list-style: none;
+	display: inline;
+}
+
+#question h1 {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	padding: 2%;
+}*/
+
+/*#question p{ 
+	font-size: 1.75rem;
+	padding: 2%;
+	text-align: left;
+}
+
+.clear {
+	clear: both;
+}*/
+
+
+
+
+/****ANSWER DIV***********/
+
+/*.answer span {
+	width: 30%;
+	color: #E60000;
+}
+
+.yes {
+	margin-right: 6%;
+}
+
+.answer .button {
+	background-color: #3A3A3A;
+	border-color: #000;
+}
+
+.answer a {
+	font-size: 16px;
+}
+
+.answer span:hover{
+  color: #888; }*/
+
+/****DATA DIV***********/
+
+/*#data {
+	padding: 50px;
+}
+
+.record{
+ float: left;
+ width: 100%;
+ border: 5px solid #444;
+ background-color: #f0f0f0;
+ margin-bottom: 2px;
+ border-radius: 10px;
+ border-radius: 10px;
+ }
+
+.bar {
+ background: #E60000;
+ float: left;
+ clear: left;
+ height: 30px;
+ border-radius: 5px;
+ border-radius: 5px;
+ }
+
+.bar span{
+ color: #fff;
+ float: left;
+ margin-left: 5px;
+ margin-top: 7px;
+ }
+
+.p{
+ padding-top: 3px;
+ float: right;
+ color: #6D8591;
+ clear: right;
+ height: 25px;
+ }
+
+.p span{
+ float: left;
+ margin-right: 5px;
+ margin-top: 5px;
+ }*/
+
+
+/***************SUBMIT PAGE***************/
+
+/*.messages p {
+	color: #8B0000;
+	font-size: 16px;
+	font-weight: bolder;
+}
+
+#submitButton {
+	background-color: #3A3A3A;
+	border-color: #000;
+	color: #E60000;
+	font-size: 16px;
+}
+*/
+
+
+/*************RESPONSIVE*************/
+
+@media (max-width: 399px) {
+	.container {
+
+	}
+
+}
+
