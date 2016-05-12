@@ -96,3 +96,14 @@ def loginview(request):
 def logoutview(request):
   logout(request)
   return render(request, 'app/login.html')
+
+@login_required(login_url='/login')
+def profile(request):
+  return render(request, 'app/profile.html')
+
+
+
+
+
+
+
