@@ -1,5 +1,5 @@
 from django import forms
-from app.models import User, Question
+from app.models import User, Question, UserProfile
 
 class UserForm(forms.ModelForm):
   username = forms.CharField(help_text="Choose your Ninja name (must be at least 5 characters long)",
@@ -47,6 +47,22 @@ class UserForm(forms.ModelForm):
     # Provide an association between the ModelForm and a model
     model = User
     fields = ('username', 'email')
+
+class UserProfileForm(forms.ModelForm):
+  birthdate = forms.DateField(help_text="What date were you born?",
+                              widget=forms.DateInput, 
+                              required=True)
+  gender = forms.ChoiceField(help_text="Select your pronoun", 
+                              required=True)
+  zipcode = forms.CharField(help_text="What's your zipcode?", 
+                              required=True)
+
+  class Meta:
+    # Provide an association between the ModelForm and a model
+    model = UserProfile
+    fields = ('birthdate', 'gender', 'zipcode')
+
+
 
 class QuestionForm(forms.ModelForm):
   question = forms.CharField(help_text="Write a yes/no question.",

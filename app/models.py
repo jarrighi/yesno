@@ -19,5 +19,23 @@ class Answer(models.Model):
 	def __unicode__(self):
 		return "Answer # {}".format(self.id)
 
+class UserProfile(models.Model):
+	HER = 'Her'
+	HIM = 'Him'
+	THEM = 'Them'
+
+	GENDER_CHOICES = (
+		(HER, 'Her'), 
+		(HIM, 'Him'),
+		(THEM, 'Them')
+		)
+	user = models.OneToOneField(User)
+	birthdate = models.DateField()
+	gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
+	zipcode = models.CharField(max_length=10)
+
+	def __unicode__(self):
+		return "Profile # {}".format(self.id)
+
 
 
