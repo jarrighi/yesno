@@ -42,6 +42,7 @@ class UserForm(forms.ModelForm):
     user.set_password(self.cleaned_data["password1"])
     if commit:
       user.save()
+    return user
 
   class Meta:
     # Provide an association between the ModelForm and a model
@@ -49,10 +50,19 @@ class UserForm(forms.ModelForm):
     fields = ('username', 'email')
 
 class UserProfileForm(forms.ModelForm):
+  HER = 'Her'
+  HIM = 'Him'
+  THEM = 'Them'
+
+  GENDER_CHOICES = ((HER, 'Her'), 
+                    (HIM, 'Him'),
+                    (THEM, 'Them'))
+
   birthdate = forms.DateField(help_text="What date were you born?",
                               widget=forms.DateInput, 
                               required=True)
   gender = forms.ChoiceField(help_text="Select your pronoun", 
+                              choices=GENDER_CHOICES,
                               required=True)
   zipcode = forms.CharField(help_text="What's your zipcode?", 
                               required=True)
