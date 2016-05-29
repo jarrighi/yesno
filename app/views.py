@@ -3,8 +3,8 @@ from django import forms
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from app.models import Question, Answer
-from app.forms import UserForm, QuestionForm
+from app.models import Question, Answer, UserProfile
+from app.forms import UserForm, QuestionForm, UserProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -60,20 +60,28 @@ def submit_q(request):
 	
 def signup(request):
   if request.method == "POST":
-    form = UserForm(request.POST)
-    if form.is_valid():
-      form.save()
+    userform = UserForm(request.POST)
+    profileform = UserProfileForm(request.POST)
+    if userform.is_valid() and profileform.is_valid():
+      user = userform.save()
+      print user
+      profile = profileform.save(commit=False)
+      profile.user = user
+      profile.save()
+
       return question(request)
     else:
         # The supplied form contained errors - just print them to the terminal.
-      print form.errors
+      print userform.errors, profileform.errors
   else:
       # If the request was not a POST, display the form to enter details.
-    form = UserForm()
+    userform = UserForm()
+    profileform = UserProfileForm()
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-  return render(request, 'app/signup.html', {'form': form})
+  return render(request, 'app/signup.html', 
+                  {'userform': userform, 'profileform': profileform})
   
 
 def loginview(request):
@@ -100,7 +108,9 @@ def logoutview(request):
 @login_required(login_url='/login')
 def profile(request):
   question_list = Question.objects.filter(user=request.user.id)
-  return render(request, 'app/profile.html', {'question_list': question_list})
+  profile = UserProfile.objects.get(user_id=request.user.id)
+  return render(request, 'app/profile.html', 
+                  {'question_list': question_list, 'profile': profile})
 
 
 
