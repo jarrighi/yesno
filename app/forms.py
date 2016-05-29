@@ -49,14 +49,41 @@ class UserForm(forms.ModelForm):
     model = User
     fields = ('username', 'email')
 
-class UserProfileForm(forms.ModelForm):
-  HER = 'Her'
-  HIM = 'Him'
-  THEM = 'Them'
 
-  GENDER_CHOICES = ((HER, 'Her'), 
-                    (HIM, 'Him'),
-                    (THEM, 'Them'))
+class UserProfileForm(forms.ModelForm):
+  
+  GENDER_CHOICES = (
+    ('Her', 'Her'), 
+    ('Him', 'Him'),
+    ('Them', 'Them')
+    )
+
+  INCOME_CHOICES = (
+    ('a', '$0-$35,000'),
+    ('b', '$35,001-$50,000'),
+    ('c', '$50,001-$100,000'),
+    ('d', '$100,001+')
+    )
+
+  RACE_CHOICES = (
+    ('Asian', 'Asian'),
+    ('Middle Eastern', 'Middle Eastern'),
+    ('Black', 'Black'),
+    ('Native American', 'Native American'),
+    ('Hispanic/Latin', 'Hispanic/Latin'),
+    ('Pacific Islander', 'Pacific Islander'),
+    ('White', 'White'),
+    ('Mixed', 'Mixed'),
+    ('Other', 'Other')
+    )
+    
+  ORIENTATION_CHOICES = (
+    ('Men', 'Men'),
+    ('Women', 'Women'),
+    ('Everyone', 'Everyone'),
+    ('Neither', 'Neither'),
+    ('Other', 'Other')
+    )
 
   birthdate = forms.DateField(help_text="What date were you born?",
                               widget=forms.DateInput, 
@@ -66,11 +93,17 @@ class UserProfileForm(forms.ModelForm):
                               required=True)
   zipcode = forms.CharField(help_text="What's your zipcode?", 
                               required=True)
+  income = forms.ChoiceField(help_text="How much do you make?", 
+                              choices=INCOME_CHOICES)
+  race = forms.ChoiceField(help_text="What's your race?", 
+                              choices=RACE_CHOICES)
+  orientation = forms.ChoiceField(help_text="Who are you attracted to?", 
+                              choices=ORIENTATION_CHOICES)
 
   class Meta:
     # Provide an association between the ModelForm and a model
     model = UserProfile
-    fields = ('birthdate', 'gender', 'zipcode')
+    fields = ('birthdate', 'gender', 'zipcode', 'income', 'race', 'orientation')
 
 
 
