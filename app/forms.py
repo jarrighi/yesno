@@ -85,13 +85,13 @@ class UserProfileForm(forms.ModelForm):
     ('Other', 'Other')
     )
 
-  birthdate = forms.DateField(help_text="What date were you born?",
+  birthdate = forms.DateField(help_text="What date were you born? *required",
                               widget=forms.DateInput, 
                               required=True)
-  gender = forms.ChoiceField(help_text="Select your pronoun", 
+  gender = forms.ChoiceField(help_text="Select your pronoun. *required", 
                               choices=GENDER_CHOICES,
                               required=True)
-  zipcode = forms.CharField(help_text="What's your zipcode?", 
+  zipcode = forms.CharField(help_text="What's your zipcode? *required", 
                               required=True)
   income = forms.ChoiceField(help_text="How much do you make?", 
                               choices=INCOME_CHOICES)

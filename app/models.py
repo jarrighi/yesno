@@ -60,7 +60,7 @@ class UserProfile(models.Model):
 	zipcode = models.CharField(max_length=10)
 	income = models.CharField(max_length=1, choices=INCOME_CHOICES, blank=True, null=True)
 	race = models.CharField(max_length=15, choices=RACE_CHOICES, blank=True, null=True)
-	orientation = models(max_length=15, choices=ORIENTATION_CHOICES, blank=True, null=True)
+	orientation = models.CharField(max_length=15, choices=ORIENTATION_CHOICES, blank=True, null=True)
 
 	def __unicode__(self):
 		return "Profile # {}".format(self.id)
