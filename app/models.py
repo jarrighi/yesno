@@ -20,19 +20,47 @@ class Answer(models.Model):
 		return "Answer # {}".format(self.id)
 
 class UserProfile(models.Model):
-	HER = 'Her'
-	HIM = 'Him'
-	THEM = 'Them'
 
 	GENDER_CHOICES = (
-		(HER, 'Her'), 
-		(HIM, 'Him'),
-		(THEM, 'Them')
+		('Her', 'Her'), 
+		('Him', 'Him'),
+		('Them', 'Them')
 		)
+
+	INCOME_CHOICES = (
+		('a', '$0-$35,000'),
+		('b', '$35,001-$50,000'),
+		('c', '$50,001-$100,000'),
+		('d', '$100,001+')
+		)
+
+	RACE_CHOICES = (
+		('Asian', 'Asian'),
+		('Middle Eastern', 'Middle Eastern'),
+		('Black', 'Black'),
+		('Native American', 'Native American'),
+		('Hispanic/Latin', 'Hispanic/Latin'),
+		('Pacific Islander', 'Pacific Islander'),
+		('White', 'White'),
+		('Mixed', 'Mixed'),
+		('Other', 'Other')
+		)
+		
+	ORIENTATION_CHOICES = (
+		('Men', 'Men'),
+		('Women', 'Women'),
+		('Everyone', 'Everyone'),
+		('Neither', 'Neither'),
+		('Other', 'Other')
+		)
+
 	user = models.OneToOneField(User)
 	birthdate = models.DateField()
 	gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
 	zipcode = models.CharField(max_length=10)
+	income = models.CharField(max_length=1, choices=INCOME_CHOICES)
+	race = models.CharField(max_length=15, choices=RACE_CHOICES)
+	orientation = models(max_length=15, choices=ORIENTATION_CHOICES)
 
 	def __unicode__(self):
 		return "Profile # {}".format(self.id)
