@@ -108,9 +108,10 @@ def logoutview(request):
 @login_required(login_url='/login')
 def profile(request):
   question_list = Question.objects.filter(user=request.user.id)
+  answer_list = Question.objects.filter(answer__user=request.user.id)
   profile = UserProfile.objects.get(user_id=request.user.id)
   return render(request, 'app/profile.html', 
-                  {'question_list': question_list, 'profile': profile})
+                  {'question_list': question_list, 'answer_list': answer_list, 'profile': profile})
 
 
 

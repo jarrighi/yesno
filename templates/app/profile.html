@@ -20,12 +20,23 @@
 <p>Race: {{ profile.race }}</p>
 <p>Orientation: {{ profile.orientation }}</p>
 
+<h3>My Questions:</h3>
 <ul>
 {% for q in question_list %}
   <li>
     {{ q.question }}
   </li>
   
+{% endfor %}
+</ul>
+
+<h3>My Answers:</h3>
+<ul>
+{% for a in answer_list %}
+<li>
+  {{ a.question }}
+</li>
+
 {% endfor %}
 </ul>
 
