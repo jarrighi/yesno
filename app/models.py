@@ -63,7 +63,7 @@ class UserProfile(models.Model):
 	orientation = models.CharField(max_length=15, choices=ORIENTATION_CHOICES, blank=True, null=True)
 
 	def __unicode__(self):
-		return "Profile # {}".format(self.id)
+		return "{}'s Profile".format(self.user.username)
 
 
 
