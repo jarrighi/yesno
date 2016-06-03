@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<h1>{{ user.username}}'s Profile Page</h1>
+<h1 class="text-primary">{{ user.username }}'s Ninja Stats</h1>
 <p>Ninja name: {{ user.username }} </p>
 
 <p>Email: {{ user.email }} </p>
@@ -20,7 +20,7 @@
 <p>Race: {{ profile.race }}</p>
 <p>Orientation: {{ profile.orientation }}</p>
 
-<h3>My Questions:</h3>
+<h3 class="text-primary">My Questions</h3>
 <ul>
 {% for q in question_list %}
   <li>
@@ -30,7 +30,7 @@
 {% endfor %}
 </ul>
 
-<h3>My Answers:</h3>
+<h3 class="text-primary">My Answers</h3>
 <ul>
 {% for a in answer_list %}
 <li>
