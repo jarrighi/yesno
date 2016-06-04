@@ -68,7 +68,9 @@ def signup(request):
       profile = profileform.save(commit=False)
       profile.user = user
       profile.save()
-
+      newuser = authenticate(username=userform.cleaned_data["username"], 
+                            password=userform.cleaned_data["password1"])
+      login(request, newuser)
       return question(request)
     else:
         # The supplied form contained errors - just print them to the terminal.
