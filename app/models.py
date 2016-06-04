@@ -16,6 +16,9 @@ class Answer(models.Model):
 	published = models.DateTimeField(auto_now_add=True, null=True)
 	answer = models.NullBooleanField()
 
+	class Meta:
+		unique_together = (('user', 'question'),)
+
 	def __unicode__(self):
 		return "Answer # {}".format(self.id)
 

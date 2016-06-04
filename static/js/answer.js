@@ -19,6 +19,8 @@ for (var i = 0; i < answerButtons.length; i++) {
                 + data.nos + '</span></div></div>';
 
                 $('#data').html(data_html);
+                $('#yes-button').attr('disabled', true);
+                $('#no-button').attr('disabled', true);
             }
         });
     });
